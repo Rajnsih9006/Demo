@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Login</title>
+</head>
+<body>
+<form action="home" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="username"><br>
+    <input type="text" name="firstname" placeholder="firstname"><br>
+    <input type="text" name="lastname" placeholder="lastname"><br><br>
+    <input type="text" name="email" placeholder="email"><br>
+    <input type="text" name="password" placeholder="password"><br>
+    <input type="integer" name="mobile" placeholder="mobile"><br>
+    <input type="submit">
+
+
+</form>
+
+</body>
+</html>

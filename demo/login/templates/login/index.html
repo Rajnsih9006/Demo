@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>AJLATI</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+     <a class="navbar-brand" href="#">AJLATI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+      <!-- Button trigger modal -->
+
+    {% if user.is_authenticated %}
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Welcome {{request.user}}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="logout">logout</a></li>
+    <li><a class="dropdown-item" href="profile">profile</a></li>
+
+  </ul>
+</div>
+    {% else %}
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Signup">
+ Signup
+</button>
+
+    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#loginmodal">
+  Login
+</button>
+    {% endif %}
+
+
+<!-- Signup Modal -->
+<div class="modal fade" id="Signup" tabindex="-1" aria-labelledby="Signup" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Signup">Signup</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="signup">
+          {% csrf_token %}
+           <div class="mb-3">
+    <label for="user" class="form-label">User</label>
+    <input type="text" class="form-control" id="user" name="username" aria-describedby="userHelp">
+    <div id="userHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+           <div class="mb-3">
+    <label for="fname" class="form-label">First name</label>
+    <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fnameHelp">
+    <div id="fnameHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+           <div class="mb-3">
+    <label for="lname" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lnameHelp">
+    <div id="lnameHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+           <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password"aria-describedby="passwordHelp">
+    <div id="passwordHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+           <div class="mb-3">
+    <label for="password1" class="form-label">Confirm password</label>
+    <input type="password" class="form-control" id="password1" name="password1" aria-describedby="password1Help">
+    <div id="password1Help" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <!-- Button trigger modal -->
+
+
+<!-- Login Modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginmodal">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="login">
+           {% csrf_token %}
+           <div class="mb-3">
+    <label for="loginuser" class="form-label">Username</label>
+    <input type="text" class="form-control" id="loginuser" name="user"aria-describedby="loginuserHelp">
+    <div id="loginuserHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+          <div class="mb-3">
+    <label for="Password" class="form-label"> Password</label>
+    <input type="password" class="form-control" id="loginPassword" name="pwd" aria-describedby="loginPasswordHelp">
+    <div id="loginPasswordHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+
+       <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+</nav>
+
+    <h1>Welcome to AJLATI</h1>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  {% block body %}  {% endblock body %}
+
+</html>
+
